@@ -1,5 +1,5 @@
 <template>
-	<header>
+	<header class="main-header">
 		<h1>Contacts</h1>
 		<nav>
 			<RouterLink to="/">Home</RouterLink>
@@ -14,7 +14,7 @@ export default {}
 </script>
 
 <style lang="scss">
-header {
+.main-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
