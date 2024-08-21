@@ -4,9 +4,9 @@
             <li v-for="contact in contacts" :key="contact._id">
                 <ContactPreview :contact="contact" />
                 <div class="actions">
-                    <button  @click="onRemoveContact(contact._id)">x</button>
-                    <!-- <RouterLink :to="`/contact/${contact._id}`"><button>Details</button></RouterLink> -->
-                    <!-- <RouterLink :to="`/contact/edit/${contact._id}`"><button>Edit</button></RouterLink> -->
+                    <button @click="onRemoveContact(contact._id)">🗑️</button>
+                    <RouterLink :to="`/contact/${contact._id}`"><button>🕵️</button></RouterLink>
+                    <RouterLink :to="`/contact/edit/${contact._id}`"><button>✏️</button></RouterLink>
                 </div>
             </li>
         </TransitionGroup>
@@ -20,7 +20,7 @@ import ContactPreview from '../cmps/ContactPreview.vue';
 export default {
     props: {
         contacts: {
-            type: Array,
+            type: Object,
             required: true,
         }
     },
@@ -37,26 +37,76 @@ export default {
 </script>
 
 <style lang="scss">
-.contact-list ul {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 5px;
-    padding: 10px;
-    list-style: none;
+.contact-list {
+    ul {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 20px;
+        list-style: none;
+
+        li {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(49, 78, 108);
+            border-radius: 8px;
+            overflow: hidden;
+          
+
+            .contact-preview {
+                padding: 20px;
+            }
+
+            .actions {
+                display: flex;
+                justify-content: flex-end;
+                gap: 10px;
+                padding: 10px 20px;
+                background-color: rgba(0, 0, 0, 0.1);
+                text-decoration: none;
+
+                button {
+                    background-color: #ddd;
+                    border: none;
+                    border-radius: 50%;
+                    width: 35px;
+                    height: 35px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+
+                    &:hover {
+                        background-color: #ccc;
+                    }
+                }
+            }
+
+            &:hover {
+                background-color: rgb(63, 94, 128);
+                cursor: pointer;
+
+            }
+        }
 
 
-    li {
-        display: flex;
-        padding: 10px;
-        background-color: rgb(163, 141, 77);
-        border-radius: 5px;
-        height: fit-content;
-        width: fit-content;
     }
 
-    .actions {
-      
+    .list-move,
+    .list-enter-active,
+    .list-leave-active {
+        transition: all 0.5s ease;
+    }
+
+    .list-enter-from,
+    .list-leave-to {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    .list-leave-active {
+        position: absolute;
     }
 }
 
