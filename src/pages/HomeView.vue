@@ -1,7 +1,13 @@
-<script >
+<template>
+  <h1>ok</h1>
+</template>
+
+<script>
+export default {
+
+}
 </script>
 
-<template>
-  <main>
-  </main>
-</template>
+<style>
+
+</style>
