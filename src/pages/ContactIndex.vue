@@ -1,8 +1,8 @@
 <template>
-  <header>
+  <header class="contacts-container">
     <h1>Contacts</h1>
     <ContactFilter @filter="onFilter" />
-    <RouterLink to="/contact/edit" ><button>Add a Contact</button></RouterLink>
+    <RouterLink to="/contact/edit"><button class="add-contact-btn">Add a Contact</button></RouterLink>
   </header>
   <ContactList v-if="contacts" @remove="removeContact" :contacts="contacts" />
 </template>
@@ -48,4 +48,14 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.contacts-container {
+    text-align: center;
+    .add-contact-btn{
+      width: 125px;
+      height: 35px;
+    }
+  
+  
+}
+</style>

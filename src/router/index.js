@@ -3,6 +3,7 @@ import HomeView from '../pages/HomeView.vue'
 import ContactIndex from '../pages/ContactIndex.vue'
 import ContactDetails from '../pages/ContactDetails.vue'
 import ContactEdit from '../pages/ContactEdit.vue'
+import StatisticsPage from '../pages/StatisticsPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,6 +17,11 @@ const router = createRouter({
       path: '/contact',
       name: 'contact',
       component: ContactIndex
+    },
+    {
+      path: '/statistics',
+      name: 'statistics',
+      component: StatisticsPage
     },
     {
       path: '/contact/:id',
