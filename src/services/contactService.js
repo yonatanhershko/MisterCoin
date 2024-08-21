@@ -126,7 +126,7 @@ const contacts = [
     }
 ];
 
-function sort(arr) {
+function _sort(arr) {
     return arr.sort((a, b) => {
         if (a.name.toLocaleLowerCase() < b.name.toLocaleLowerCase()) {
             return -1;
@@ -139,13 +139,13 @@ function sort(arr) {
     })
 }
 
-function getContacts(filterBy = null) {
+function getContacts(filterBy = null) {    
     return new Promise((resolve, reject) => {
         var contactsToReturn = contacts;
-        if (filterBy && filterBy.term) {
-            contactsToReturn = filter(filterBy.term)
+        if (filterBy && filterBy.txt) {
+            contactsToReturn = _filter(filterBy.txt)
         }
-        resolve(sort(contactsToReturn))
+        resolve(_sort(contactsToReturn))
     })
 }
 
@@ -197,7 +197,7 @@ function getEmptyContact() {
     }
 }
 
-function filter(term) {
+function _filter(term) {
     term = term.toLocaleLowerCase()
     return contacts.filter(contact => {
         return contact.name.toLocaleLowerCase().includes(term) ||

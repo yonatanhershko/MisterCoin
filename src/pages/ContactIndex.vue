@@ -1,7 +1,7 @@
 <template>
   <header>
     <h1>Contacts</h1>
-    <!-- <ContactFilter @filter="onFilter" /> -->
+    <ContactFilter @filter="onFilter" />
     <!-- <RouterLink to="/contact/edit" ><button>Add a Contact</button></RouterLink> -->
   </header>
   <ContactList v-if="contacts" @remove="removeContact" :contacts="contacts" />
@@ -9,6 +9,7 @@
 
 <script>
 import ContactList from '../cmps/ContactList.vue';
+import ContactFilter from '../cmps/ContactFilter.vue';
 import { contactService } from '../services/contactService';
 import { showErrorMsg, showSuccessMsg } from '@/services/eventBus.service';
 
@@ -31,9 +32,9 @@ export default {
         showErrorMsg('Something went wrong...')
       }
     },
-    // async onFilter(filterBy) {
-    //   this.contacts = await contactService.getContacts(filterBy)
-    // }
+    async onFilter(filterBy) {
+      this.contacts = await contactService.getContacts(filterBy)
+    }
   },
 
   async created() {
@@ -41,7 +42,7 @@ export default {
   },
   components: {
     ContactList,
-    // ContactFilter,
+    ContactFilter,
   }
 
 }

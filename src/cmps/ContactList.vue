@@ -49,7 +49,7 @@ export default {
     li {
         display: flex;
         padding: 10px;
-        background-color: lightblue;
+        background-color: rgb(163, 141, 77);
         border-radius: 5px;
         height: fit-content;
         width: fit-content;
